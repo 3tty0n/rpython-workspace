@@ -172,6 +172,7 @@ def interp(frame, pc=0):
 
         if opcode == CONST_INT:
             _CONST_INT(frame, pc)
+            pc += 1
 
         elif opcode == POP:
             _POP(frame)
@@ -202,7 +203,7 @@ def interp(frame, pc=0):
             pc += 1
 
         elif opcode == RETURN:
-            _RETURN(frame)
+            return _RETURN(frame)
 
         else:
             assert False, 'Unknown opcode: %d' % opcode
